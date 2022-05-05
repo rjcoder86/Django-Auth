@@ -6,6 +6,7 @@ from .models import User
 from .serializer import LoginSerializer, RegistrationSerializer
 
 
+#function to return token created using user credential
 def get_tokens(user):
   refresh = RefreshToken.for_user(user)
   return {

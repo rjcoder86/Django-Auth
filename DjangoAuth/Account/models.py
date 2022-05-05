@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager,AbstractBaseUser
+from rest_framework.exceptions import ValidationError
 
-#  Custom User Manager
 class UserManager(BaseUserManager):
   def create_user(self, email, name, phoneno, password=None, password2=None):
       if not email:
@@ -27,11 +27,17 @@ class UserManager(BaseUserManager):
       user.save(using=self._db)
       return user
 
+#validation function for phone no
+def mobile_no(value):
+  mobile = str(value)
+  if len(mobile) != 10:
+    raise ValidationError("Mobile Number Should 10 digit")
+
 
 class User(AbstractBaseUser):
   email = models.EmailField(verbose_name='Email',max_length=255,unique=True,)
   name = models.CharField(max_length=200)
-  phoneno = models.IntegerField(default=000)
+  phoneno = models.IntegerField(default=000,validators=(mobile_no,))
   is_verified=models.BooleanField(default=False)
   is_active = models.BooleanField(default=True)
   is_admin = models.BooleanField(default=False)
