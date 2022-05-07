@@ -1,10 +1,13 @@
 from django.contrib.auth import authenticate
+from django.shortcuts import render
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User
 from .serializer import LoginSerializer, RegistrationSerializer
 
+def index(request):
+    return render (request,'index.html')
 
 #function to return token created using user credential
 def get_tokens(user):
@@ -13,7 +16,6 @@ def get_tokens(user):
       'refresh': str(refresh),
       'access': str(refresh.access_token),
   }
-
 
 class RegistrationView(generics.GenericAPIView):
     queryset = User.objects.all()
