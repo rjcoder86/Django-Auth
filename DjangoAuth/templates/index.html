@@ -6,9 +6,11 @@
 </head>
 <body><center>
 <h1>Django Auth API</h1>
-    <a href=" http://127.0.0.1:8000/account/register">Register link</a>
+    <a href=" http://{{ d.domain}}/register">Register link</a>
     <br><br>
-    <a href=" http://127.0.0.1:8000/account/login">Login link</a>
+    <a href=" http://{{ d.domain}}/login">Login link</a>
+
+    <h3>{{ d.domain }}</h3>
 </center>
 </body>
 </html>
