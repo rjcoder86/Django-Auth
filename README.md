@@ -3,7 +3,7 @@
 
 In this project user login and register API are created using Django (Python) framework
 
-![ Image ](Django-Auth/DjangoAuth/templates/django.jpg)
+![ Image ](DjangoAuth/templates/django.jpg)
 
 
 ### API Reference
@@ -13,8 +13,6 @@ In this project user login and register API are created using Django (Python) fr
 ```http
   POST /account/register
 ```
-
-![ Image ](Django-Auth/DjangoAuth/templates/)
 
 ```http
   GET /account/login
